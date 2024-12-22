@@ -22,7 +22,7 @@ class UUIDGenerator(BaseSettings):
 
     @field_validator("namespace", mode="before")
     def validate_namespace(cls, v):
-        if v.startswith("spec::"):
+        if str(v).startswith("spec::"):
             try:
                 return getattr(uuid, "NAMESPACE_" + v.split("::")[1].upper())
             except AttributeError:
