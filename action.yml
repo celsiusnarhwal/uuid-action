@@ -1,4 +1,5 @@
 name: Generate UUID
+
 inputs:
   name:
     description: placeholder
@@ -7,6 +8,10 @@ inputs:
     description: placeholder
     required: false
 
+outputs:
+  uuid:
+    description: placeholder
+    value: ${{ steps.uuid.outputs.uuid }}
 
 runs:
   using: composite
