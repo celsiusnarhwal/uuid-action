@@ -20,13 +20,13 @@ Both inputs are optional. Providing only one or neither will always result in a 
 
 ### Outputs
 
-| **Name**    | **Description**                                                              |
-|-------------|------------------------------------------------------------------------------|
-| `uuid`      | The generated UUID.                                                          | |
-| `hex`       | The UUID as a 32-character lowercase hexadecimal string.                     |
-| `int`       | The UUID as a 128-bit integer.                                               |
+| **Name**    | **Description**                                                               |
+|-------------|-------------------------------------------------------------------------------|
+| `uuid`      | The generated UUID.                                                           | |
+| `hex`       | The UUID as a 32-character lowercase hexadecimal string.                      |
+| `int`       | The UUID as a 128-bit integer.                                                |
 | `urn`       | The UUID as an [RFC 4122](https://datatracker.ietf.org/doc/html/rfc4122) URN. |
-| `namespace` | The namespace identifier used to generated the UUID.                         |
-| `name`      | The name used to generate the UUID.                                          |
-| `json`      | All other outputs as a single JSON object.                                   |
+| `namespace` | The namespace identifier used to generated the UUID.                          |
+| `name`      | The name used to generate the UUID.                                           |
+| `json`      | All other outputs as a single JSON object.                                    |
 
