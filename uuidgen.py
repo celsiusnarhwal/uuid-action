@@ -27,7 +27,7 @@ class UUIDGenerator(BaseSettings):
 
     @field_validator("namespace")
     def validate_namespace(cls, v):
-        return getattr(uuid, "NAMESPACE_{v.upper()}", v)
+        return getattr(uuid, f"NAMESPACE_{v.upper()}", v)
 
 
 generator = UUIDGenerator()
