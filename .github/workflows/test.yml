@@ -1,0 +1,16 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate UUID
+        uses: celsiusnarhwal/uuid-action@main
+
+      - name: Print UUID
+        run: echo ${{ steps.uuid.outputs.uuid }}
