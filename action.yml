@@ -1,17 +1,35 @@
 name: Generate UUID
 
 inputs:
-  name:
+  namespace:
     description: placeholder
     required: false
-  namespace:
+  name:
     description: placeholder
     required: false
 
 outputs:
   uuid:
-    description: placeholder
+    description: The generated UUID.
     value: ${{ steps.uuid.outputs.uuid }}
+  hex:
+    description: The UUID as a 32-character lowercase hexadecimal string.
+    value: ${{ steps.uuid.outputs.hex }}
+  int:
+    description: The UUID as a 128-bit integer.
+    value: ${{ steps.uuid.outputs.int }}
+  urn:
+    description: The UUID as an RFC 4122 URN.
+    value: ${{ steps.uuid.outputs.urn }}
+  namespace:
+    description: The namespace identifier used to generated the UUID.
+    value: ${{ steps.uuid.outputs.namespace }}
+  name:
+    description: The name used to generate the UUID.
+    value: ${{ steps.uuid.outputs.name }}
+  json:
+    description: All other outputs as a single JSON object.
+    value: ${{ steps.uuid.outputs.json }}
 
 runs:
   using: composite
