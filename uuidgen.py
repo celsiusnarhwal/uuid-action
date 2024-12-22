@@ -9,30 +9,18 @@
 import uuid
 
 import hachitool
-from pydantic import field_validator, model_validator
+from pydantic import Field, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class UUIDGenerator(BaseSettings):
     model_config = SettingsConfigDict(validate_default=False)
 
-    name: str = None
-    namespace: str = None
+    name: str = Field(default_factory=uuid.uuid4)
+    namespace: str = Field(default_factory=lambda: str(uuid.uuid4()))
 
     def generate(self):
-        if self.name and self.namespace:
-            return uuid.uuid5(self.namespace, self.name)
-
-        return uuid.uuid4()
-
-    @model_validator(mode="after")
-    def validate_model(self):
-        if (self.name or self.namespace) and not (self.name and self.namespace):
-            hachitool.fail(
-                "You must either provide both a name and a namesapce or neither."
-            )
-
-        return self
+        return uuid.uuid5(self.namespace, self.name)
 
     @field_validator("namespace")
     def validate_namespace(cls, v):
@@ -45,7 +33,7 @@ class UUIDGenerator(BaseSettings):
         try:
             return uuid.UUID(v)
         except ValueError:
-            hachitool.fail(f"Malformed UUID: {v}")
+            hachitool.fail(f"Invalid namespace: {v}")
 
 
 hachitool.set_output(uuid=UUIDGenerator().generate())
