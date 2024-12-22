@@ -40,4 +40,4 @@ output = {
     "name": generator.name,
 }
 
-hachitool.set_output(**output, json=TypeAdapter(dict).dump_json(output).decode())  #
+hachitool.set_output(**output, json=TypeAdapter(dict).dump_json(output).decode())
