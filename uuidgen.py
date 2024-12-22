@@ -15,7 +15,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class UUIDGenerator(BaseSettings):
     name: str = Field(default_factory=uuid.uuid4)
-    namespace: UUID = Field(default_factory=uuid.uuid4)
+    namespace: uuid.UUID | str = Field(default_factory=uuid.uuid4)
 
     def generate(self):
         return uuid.uuid5(self.namespace, self.name)
