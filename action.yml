@@ -40,7 +40,7 @@ runs:
     - name: Generate UUID
       id: uuid
       shell: bash
-      run: uv run ${{ github.action_path }}/uuidgen.py
+      run: uv run '${{ github.action_path }}/uuidgen.py'
       env:
         NAMESPACE: ${{ inputs.namespace }}
         NAME: ${{ inputs.name }}
