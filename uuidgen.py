@@ -11,10 +11,12 @@ import uuid
 
 import hachitool
 from pydantic import Field, TypeAdapter, field_validator
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class UUIDGenerator(BaseSettings):
+    model_config = SettingsConfigDict(env_ignore_empty=True)
+
     namespace: uuid.UUID | t.Literal["dns", "oid", "url", "x500"] = Field(
         default_factory=uuid.uuid4
     )
