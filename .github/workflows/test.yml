@@ -13,5 +13,5 @@ jobs:
         id: uuid
         uses: celsiusnarhwal/uuid-action@main
 
-      - name: Print UUID
-        run: echo ${{ steps.uuid.outputs.uuid }}
+      - name: Print UUID Info
+        run: echo ${{ steps.uuid.outputs.json }}
