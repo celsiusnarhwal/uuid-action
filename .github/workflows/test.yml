@@ -6,13 +6,31 @@ on:
       - main
 
 jobs:
-  test:
+  test-random:
     runs-on: ubuntu-latest
     steps:
       - name: Generate UUID
         id: uuid
         uses: celsiusnarhwal/uuid-action@main
 
+      - name: Print UUID Info
+        run: echo ${{ steps.uuid.outputs.json }}
+
+  test-deterministic:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        namespace: [ "dns", "oid", "url", "x500" ]
+        name: [ "foobar" ]
+    steps:
+      - name: Generate UUID
+        id: uuid
+        uses: celsiusnarhwal/uuid-action@main
+        with:
+          namespace: ${{ matrix.namespace }}
+          name: ${{ matrix.name }}
 
       - name: Print UUID Info
         run: echo ${{ steps.uuid.outputs.json }}
+
