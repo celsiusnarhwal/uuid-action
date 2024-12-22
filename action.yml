@@ -18,5 +18,3 @@ runs:
       id: uuid
       shell: bash
       run: uv run ${{ github.action_path }}/uuidgen.py
-  outputs:
-    uuid: ${{ steps.uuid.outputs.uuid }}
