@@ -6,6 +6,7 @@ This GitHub Action generates a [Universally Unique Identifier](https://datatrack
 
 ```yaml
 - name: Generate UUID
+  id: uuid
   uses: celsiusnarhwal/uuid-action@v1
 ```
 
